@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cyberpunk Futuristic Design System - All colors in HSL */
+
+@layer base {
+  :root {
+    /* Core Dark Theme */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    /* Card & Popover */
+    --card: 240 10% 7%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 7%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Cyberpunk Primary Colors */
+    --primary: 195 100% 50%;  /* Electric Blue */
+    --primary-foreground: 240 10% 3.9%;
+    --primary-glow: 195 100% 65%;
+
+    /* Secondary Neon Colors */
+    --secondary: 120 100% 50%;  /* Neon Green */
+    --secondary-foreground: 240 10% 3.9%;
+    --secondary-glow: 120 100% 65%;
+
+    /* Accent Purple */
+    --accent: 280 100% 70%;  /* Neon Purple */
+    --accent-foreground: 240 10% 3.9%;
+    --accent-glow: 280 100% 85%;
+
+    /* Pink Accent */
+    --pink: 320 100% 70%;
+    --pink-glow: 320 100% 85%;
+
+    /* Muted Colors */
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    /* System Colors */
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 195 100% 50%;
+
+    /* Gradients */
+    --gradient-cyberpunk: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-neon: linear-gradient(90deg, hsl(var(--secondary)), hsl(var(--primary)));
+    --gradient-hero: linear-gradient(135deg, hsl(240 10% 3.9%), hsl(240 8% 8%));
+    --gradient-card: linear-gradient(135deg, hsl(240 10% 7% / 0.8), hsl(240 8% 12% / 0.6));
+
+    /* Shadows & Glows */
+    --shadow-neon: 0 0 30px hsl(var(--primary) / 0.5);
+    --shadow-green: 0 0 30px hsl(var(--secondary) / 0.5);
+    --shadow-purple: 0 0 30px hsl(var(--accent) / 0.5);
+    --shadow-card: 0 8px 32px hsl(240 10% 3.9% / 0.5);
+
+    --radius: 0.75rem;
+
+    /* Sidebar Colors */
+    --sidebar-background: 240 10% 7%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 195 100% 50%;
+    --sidebar-primary-foreground: 240 10% 3.9%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 195 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-mono;
+    scroll-behavior: smooth;
+  }
+
+  /* Glassmorphism Effect */
+  .glass {
+    background: hsl(var(--card) / 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--border) / 0.2);
+  }
+
+  /* Neon Text Effect */
+  .neon-text {
+    color: hsl(var(--primary));
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+  }
+
+  .neon-green {
+    color: hsl(var(--secondary));
+    text-shadow: 0 0 10px hsl(var(--secondary) / 0.5);
+  }
+
+  /* Cyberpunk Button Styles */
+  .cyber-button {
+    background: transparent;
+    border: 2px solid hsl(var(--primary));
+    color: hsl(var(--primary));
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .cyber-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: hsl(var(--primary));
+    transition: left 0.3s ease;
+    z-index: -1;
+  }
+
+  .cyber-button:hover::before {
+    left: 0;
+  }
+
+  .cyber-button:hover {
+    color: hsl(var(--primary-foreground));
+    box-shadow: var(--shadow-neon);
+  }
+
+  /* Typing Animation */
+  .typing::after {
+    content: '|';
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  /* Scroll Reveal Animation */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+  }
+
+  .scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Particle Animation */
+  .particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: hsl(var(--primary));
+    border-radius: 50%;
+    animation: float 6s infinite linear;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(100vh) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-10px) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  /* Progress Bar Animation */
+  .progress-bar {
+    background: hsl(var(--primary));
+    height: 100%;
+    border-radius: inherit;
+    transition: width 2s ease;
+    box-shadow: var(--shadow-neon);
+  }
+}
