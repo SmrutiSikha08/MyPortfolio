@@ -91,7 +91,7 @@ export const Hero = () => {
             View Projects
           </Button>
           <a
-            href="/assets/SmrutiResume.pdf"
+            href="/SmrutiResume.pdf"
             download="SmrutiResume.pdf"
             className="px-6 py-4 text-lg font-semibold bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-2"
           >
